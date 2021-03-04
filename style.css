@@ -79,11 +79,15 @@ textarea{
 }
 
 .fa-save{
-  font-size: 3em;
+  font-size: 2em;
   align-items: center;
+  padding-top:15px;
 }
 
-/*.saveBtn*/ 
+/*.saveBtn*/
+.container{
+  width: 50%;
+} 
 
 .fa-save:hover {
   font-size: 20px;
