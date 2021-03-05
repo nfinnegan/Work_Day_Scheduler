@@ -1,5 +1,4 @@
-$(document).ready()
-date();
+$(document).ready(date)
 var plannerIndex= 0
 var plannerTimes = [
     { hour: 9,
@@ -32,6 +31,8 @@ var plannerTimes = [
 ];
 let saveToDoItem = $(".saveBtn");
 let plannerTasks = $(".inputTasks");
+let currentTime = moment().format("k")
+let currentTimeAsNum = Number(currentTime);
 
 function date(){
     today = moment().format("dddd, MMMM Do YYYY");
@@ -48,22 +49,27 @@ plannerTimes.forEach(function(el){
     let plannerCol1 = $("<div></div>").addClass("col-sm-2 col-md-2 col-lg-2 column1").appendTo(plannerRow).text(el.hour);
     let plannerCol2 = $("<input type='text' name='textbox' maxlength='140'></input>").addClass("col-sm-9 col-md-9 col-lg-9 column2 inputTasks").appendTo(plannerRow)
     let saveBtnCol3 = $("<i><i/>").addClass("col-sm-1 col-md-1 col-lg-1 column3 saveBtn far fa-save").appendTo(plannerRow);
-    let currentTime = moment().format("k:mm")
-    //console.log(currentTime);
+    let hourVal = plannerCol1.text();
+    console.log(currentTimeAsNum);
+    //console.log(typeof currentTimeAsNum);
+   // console.log(currentTime);
+    console.log(typeof el.military)
 
     //adding past, present, future class for proper input box coloring based on current time
-     console.log(el.military)
-        if (currentTime > el.military) {
-            $("input").addClass("past");
-            }
-        else if (currentTime < el.military) {
-            $("input").addClass("future");
-            $("input").removeClass("past");
-            }
-        else if (currentTime === el.military) {
-            $("input").addClass("present");
-            $("input").removeClass("past future");
-            }
+    console.log(el.military)
+    if (currentTimeAsNum > el.military) {
+         $("input").addClass("past");
+};
+    if (currentTimeAsNum < el.military) {
+        $("input").removeClass("past");
+        $("input").addClass("future");
+};
+    if (currentTimeAsNum === el.military) {
+        $("input").removeClass("past");
+        $("input").removeClass("future");
+        $("input").addClass("present");
+};
+        
         
         //adding AM or PM respectively
         if(el.hour === 9 || el.hour === 10 || el.hour === 11){
@@ -81,12 +87,12 @@ plannerTimes.forEach(function(el){
 
             function saveIcon(event){
             event.preventDefault();
-            console.log(this);
             var hourTasks = {
                 hour: hourVal,
-                userTask: plannerTasks.val(),
+                userTask: $("input:text").each(function(){
+                    $(this).val()
+                    })
                 }
-        
             let tasksList = JSON.parse(localStorage.getItem("taskItems")) || []
             tasksList.push(hourTasks);
             let newTaskList = JSON.stringify(tasksList)
@@ -96,12 +102,9 @@ plannerTimes.forEach(function(el){
             }
 
     })        
-//event listener for save icon
-// let currentTime = moment().format("h:mm")
 
-// function timeCheck(){
-//     if(currentTime )
-// }
+
+
 
  
 
@@ -111,3 +114,23 @@ plannerTimes.forEach(function(el){
 
 
  
+// if (currentTimeAsNum > el.military) {
+//     $("input").addClass("past");
+// };
+// if (currentTimeAsNum < el.military) {
+//     $("input").removeClass("past");
+//     $("input").addClass("future");
+// };
+// if (currentTimeAsNum === el.military) {
+//     $("input").removeClass("past");
+//     $("input").removeClass("future");
+//     $("input").addClass("present");
+// };
+    
+
+// $("input").toggleClass("past",currentTimeAsNum > el.military);
+
+// $("input").toggleClass("future",currentTimeAsNum < el.military);
+    
+
+// $("input").toggleClass("present",currentTimeAsNum === el.military);
