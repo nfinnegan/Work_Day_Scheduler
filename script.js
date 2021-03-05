@@ -42,20 +42,21 @@ function date(){
     $("#currentDay").text(today);
 };
 
+function getStorage (){
 for (i=0; i < localStorage.length; i++){
     var key = localStorage.key(i);
     var value = localStorage.getItem(key);
     console.log(key + ": " + value)
-    $(timeValue).val(localStorage.getItem(value))
+    //$("#" + el.hour).val(value);
     
 }
 
-
+}
 
 //creating 1 set of the rows & columns needed per time block
 plannerTimes.forEach(function(el){
     let plannerRow = $("<div></div>").addClass("row justify-content-center").appendTo(".container");
-    let plannerCol1 = $("<div></div>").addClass("col-sm-2 col-md-2 col-lg-2 column1").appendTo(plannerRow).text(el.hour);
+    let plannerCol1 = $("<div></div>").addClass("col-sm-2 col-md-2 col-lg-2 column1").appendTo(plannerRow).text(el.hour).attr("id", el.hour);
     let plannerCol2 = $("<input type='text' name='textbox' maxlength='140'></input>").addClass("col-sm-9 col-md-9 col-lg-9 column2 inputTasks ").attr("id", el.military).appendTo(plannerRow)
     let saveBtnCol3 = $("<i><i/>").addClass("col-sm-1 col-md-1 col-lg-1 column3 saveBtn far fa-save").appendTo(plannerRow);
     
