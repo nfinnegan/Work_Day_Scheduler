@@ -38,7 +38,10 @@ textarea{
 }
 
 .column1 {
-  background-color: lightpink;
+  background-color: white;
+  border-top: dashed black;
+  text-align: center;
+  padding:20px;
 }
 
 .column2 {
@@ -56,10 +59,10 @@ textarea{
 }
 
 .past {
-  background-color: #d3d3d3;
+  background-color:black;
   color: white;
 }
-
+/* background-color: #d3d3d3; */
 .present {
   background-color: #ff6961;
   color: white;

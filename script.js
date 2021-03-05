@@ -39,28 +39,48 @@ function date(){
     //console.log("hey")
 };
 
-function getHour(i){
-    return plannerTimes[i].hour;
-   
-}
 
-//plannerTimes.forEach(dayPlanner);
 
 //creating 1 set of the rows & columns needed per time block
-plannerTimes.forEach(function(){
-
+plannerTimes.forEach(function(el){
+  //  console.log(el.hour);
     let plannerRow = $("<div></div>").addClass("row justify-content-center").appendTo(".container");
-    let plannerCol1 = $("<div></div>").addClass("col-sm-2 col-md-2 col-lg-2 column1").appendTo(plannerRow).text(getHour);
+    let plannerCol1 = $("<div></div>").addClass("col-sm-2 col-md-2 col-lg-2 column1").appendTo(plannerRow).text(el.hour);
     let plannerCol2 = $("<input type='text' name='textbox' maxlength='140'></input>").addClass("col-sm-9 col-md-9 col-lg-9 column2 inputTasks").appendTo(plannerRow)
     let saveBtnCol3 = $("<i><i/>").addClass("col-sm-1 col-md-1 col-lg-1 column3 saveBtn far fa-save").appendTo(plannerRow);
+    let currentTime = moment().format("h:mm")
+    console.log(currentTime);
+    let hourVal =plannerCol1.text()
+        if(currentTime > hourVal){
+            $("input").addClass("past")
+        }
+        else if (currentTime == hourVal){
+            $("input").addClass("present")
+        }
 
-        // for(i=0; i < plannerTimes[hourIndex].length; i++){
-        //     let timeCol = $(".column1");
-        //     timeCol.text(this.hour);
-        //     console.log(timeCol);
-        // }
+
+        if(el.hour === 9 || el.hour === 10 || el.hour === 11){
+           var timeCol = plannerCol1.text(el.hour + "AM");
+    
+            }
+        else{
+           var timeCol = plannerCol1.text(el.hour + "PM")
+            }
+
+        
+    //    console.log(currentTime);
+    //    let hourVal =plannerCol1.text()
+    //     if(currentTime > hourVal){
+    //     $("input").addClass("past")
+    //      }
+
     })        
 //event listener for save icon
+// let currentTime = moment().format("h:mm")
+
+// function timeCheck(){
+//     if(currentTime )
+// }
 
     $("i").on("click",saveIcon)
 
@@ -78,26 +98,7 @@ plannerTimes.forEach(function(){
 
  
 
-//trying to add times listed on left
-// function displayTimes(){
-// let clockTime = $(".column1") 
-// if (clockTime) {
-//     let i=0;
-//     i++;
-//     while (i < plannerTimes.length){
-//         clockTime.text(plannerTimes[i])
-//     }
-// }
-// }
 
-// function displayTimes(){
-// let clockTime = $(".column1")  
-// let i=0; 
-// i < plannerTimes.length; 
-// i++
-// clockTime.text(plannerTimes[i]);
-// console.log(plannerTimes);
-// }
 
 
 
