@@ -1,5 +1,4 @@
-$(document).ready(date)
-var plannerIndex= 0
+$(document).ready(function(){
 var plannerTimes = [
     { hour: 9,
         military: 9, 
@@ -29,29 +28,17 @@ var plannerTimes = [
         military: 17, 
     },
 ];
-let saveToDoItem = $(".saveBtn");
-let plannerTasks = $(".inputTasks");
+
 let currentTime = moment().format("k")
 let currentTimeAsNum = Number(currentTime);
-//let timeValue = plannerTimes.hour
-//console.log(timeValue)
 
 
+date();
 function date(){
     today = moment().format("dddd, MMMM Do YYYY");
     $("#currentDay").text(today);
 };
 
-function getStorage (){
-for (i=0; i < localStorage.length; i++){
-    var key = localStorage.key(i);
-    var value = localStorage.getItem(key);
-    console.log(key + ": " + value)
-    //$("#" + el.hour).val(value);
-    
-}
-
-}
 
 //creating 1 set of the rows & columns needed per time block
 plannerTimes.forEach(function(el){
@@ -93,7 +80,26 @@ plannerTimes.forEach(function(el){
 //event listner for each save icon
 $(document).on("click", ".saveBtn",function(event){
     let getTaskValue = $(this).siblings("input").val();//tutor assist
-    let hourVal = $(this).siblings("div").text();
+    let hourVal = $(this).siblings("input").attr("id")
     window.localStorage.setItem(hourVal,getTaskValue);
       
     })
+
+function getStorage() {
+        for (i=0; i < localStorage.length; i++){
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key)
+            $("input").each(function(index){
+                $(this).val(value)
+            })
+          
+         
+           // console.log(key + ": " + value);
+         
+            
+            }
+        
+        }
+ getStorage()       
+
+    }) 
