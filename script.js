@@ -1,30 +1,30 @@
 $(document).ready(function(){
 var plannerTimes = [
-    { hour: 9,
+    { hour: "9:00",
         military: 9, 
     },
-    {hour: 10,
+    {hour: "10:00",
         military: 10,   
     },
-    {hour: 11,
+    {hour: "11:00",
         military: 11, 
     }, 
-    {hour: 12,
+    {hour: "12:00",
         military: 12,    
     },
-    {hour: 1,
+    {hour: "1:00",
         military: 13, 
     },
-    {hour: 2,
+    {hour: "2:00",
         military: 14, 
     },
-    {hour: 3,
+    {hour: "3:00",
         military: 15, 
     },
-    {hour: 4,
+    {hour: "4:00",
         military: 16, 
     },
-    {hour: 5,
+    {hour: "5:00",
         military: 17, 
     },
 ];
@@ -62,7 +62,7 @@ plannerTimes.forEach(function(el){
         
         
         //adding AM or PM respectively
-        if(el.hour === 9 || el.hour === 10 || el.hour === 11){
+        if(el.hour === "9:00" || el.hour === "10:00" || el.hour === "11:00"){
            var timeCol = plannerCol1.text(el.hour + "AM");
             }
         else{
@@ -86,20 +86,18 @@ $(document).on("click", ".saveBtn",function(event){
     })
 
 function getStorage() {
-        for (i=0; i < localStorage.length; i++){
-            var key = localStorage.key(i);
-            var value = localStorage.getItem(key)
-            $("input").each(function(index){
-                $(this).val(value)
-            })
-          
-         
-           // console.log(key + ": " + value);
-         
-            
-            }
+    $("#9").val(localStorage.getItem("9"));
+    $("#10").val(localStorage.getItem("10"));
+    $("#11").val(localStorage.getItem("11"));
+    $("#12").val(localStorage.getItem("12"));
+    $("#13").val(localStorage.getItem("13"));
+    $("#14").val(localStorage.getItem("14"));
+    $("#15").val(localStorage.getItem("15"));
+    $("#16").val(localStorage.getItem("16"));
+    $("#17").val(localStorage.getItem("17"));
         
         }
+
  getStorage()       
 
     }) 
