@@ -36,9 +36,9 @@ THEN the saved events persist
 
 ## Technologies Used
 
-*JavaScript
-*HTML
-\*CSS
+1. JavaScript
+2. HTML
+3. CSS
 
 ## Deployed Application
 
