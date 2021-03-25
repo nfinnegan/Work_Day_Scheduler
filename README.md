@@ -36,9 +36,9 @@ THEN the saved events persist
 
 ## Technologies Used
 
-JavaScript
-HTML
-CSS
+*JavaScript
+*HTML
+\*CSS
 
 ## Deployed Application
 
@@ -48,7 +48,8 @@ Link to deployed application: https://nfinnegan.github.io/Work_Day_Scheduler/
 
 ![Work_Day_Scheduler](Work_Day_Scheduler.gif)
 
-#License
+## License
+
 MIT License
 
 Copyright (c) [2021] [Natalie Finnegan]
