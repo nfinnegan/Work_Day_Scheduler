@@ -39,6 +39,9 @@ THEN the saved events persist
 1. JavaScript
 2. HTML
 3. CSS
+4. Bootstrap
+5. jQuery
+6. Moment
 
 ## Deployed Application
 
